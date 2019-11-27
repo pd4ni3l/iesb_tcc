@@ -1,3 +1,8 @@
+# Reconhecimento facial baseado no PyImage recognize_faces_image.py
+# Leitura do arquivo .pickle e recohecimento com CNN ou HOG muito pesados
+# Não testado em computador com maior processamento
+# Arquivo .pickle utilizando as faces da familia
+# Alterado para não receber parametros de entrada. Definidos dentro do código.
 import face_recognition
 import imutils
 import pickle
@@ -5,11 +10,11 @@ import cv2
 
 output = None
 display = 0
-
+pickle_file = "pickle/familia.pickle"
 # load the known faces and embeddings
 print("[INFO] loading encodings...")
 # data = pickle.loads(open(args["encodings"], "rb").read())
-data = pickle.loads(open("encod.pickle", "rb").read())
+data = pickle.loads(open(pickle_file, "rb").read())
 
 # initialize the pointer to the video file and the video writer
 print("[INFO] processing video...")

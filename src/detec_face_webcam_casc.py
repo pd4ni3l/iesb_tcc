@@ -1,3 +1,4 @@
+# Detecta face com haarcadades básico funcionamento
 import cv2
 
 video = cv2.VideoCapture(0)

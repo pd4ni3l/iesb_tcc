@@ -1,7 +1,7 @@
 import cv2
 
 video = cv2.VideoCapture(0)
-classificadorFace = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+classificadorFace = cv2.CascadeClassifier('cascades/haarcascade_frontalface_default.xml')
 
 while True:
     conectado, frame = video.read()
