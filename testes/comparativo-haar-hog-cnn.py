@@ -56,7 +56,7 @@ for face_location in facesDetectadasFR:
     cv2.rectangle(imagem, (left, top), (right, bottom),(174, 29, 196), 2)
     cv2.putText(imagem, "FR", (left - 15, bottom + 15), fonte, 0.5, (174, 29, 196, 0))
     print("loop FR")
-    
+
 cv2.imshow("Comparativo detectores", imagem)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
