@@ -26,6 +26,7 @@ print("facesDetectadasHog: ", facesDetectadasHog)
 
 # CNN
 detectorCNN = dlib.cnn_face_detection_model_v1("recursos/mmod_human_face_detector.dat")
+print("Detector CNN:", detectorCNN)
 facesDetectadasCNN = detectorCNN(imagem, 2)
 print("facesDetectadasCNN: ", facesDetectadasCNN)
 

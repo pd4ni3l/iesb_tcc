@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29519.87
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "iesb_tcc", "iesb_tcc.pyproj", "{BDCDB999-3393-4E74-823E-C6CCEE2FCB76}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BDCDB999-3393-4E74-823E-C6CCEE2FCB76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDCDB999-3393-4E74-823E-C6CCEE2FCB76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AEB213AE-3493-421A-9D27-95889A38EF3A}
+	EndGlobalSection
+EndGlobal
