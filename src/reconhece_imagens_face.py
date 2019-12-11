@@ -31,7 +31,7 @@ for arquivo in glob.glob(os.path.join("dataset/*", "*.jpg")):
         pontosFaciais = detectorPontos(imagem, face)
         # Gerar descritor facial da imagem atual
         descritorFacial = reconheciemntoFacial.compute_face_descriptor(imagem, pontosFaciais)
-        # Gerar lista como feito no valida_imagens_face.py para fazer a comparação
+        # Gerar lista como feito no gera_descritor_face.py para fazer a comparação
         listaDescritorFacial = [fd for fd in descritorFacial]
         # Gerar array numpy com os valores coletados da lista
         npArrayDescritorFacial = np.asarray(listaDescritorFacial, dtype=np.float64)

@@ -115,4 +115,4 @@ stream.release()
 
 # check to see if the video writer point needs to be released
 if writer is not None:
-	writer.release()
+    writer.release()

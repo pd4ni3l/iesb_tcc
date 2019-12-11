@@ -35,9 +35,10 @@ for arquivo in glob.glob(os.path.join("dataset/*", "*.png")):
         # Avisar com que não tem imagem e sair informando o arquivo
         print("Nenhuma face detectadas no arquivo {}".format(arquivo))
         exit(0) # Abortar a varredura da pasta para correção
+
     # Identificar os 68 pontos faciais
     for face in facesDetectadas:
-        # A parãmetro imagem é o todo e face é somente o pedaço que contem o rosto
+        # A parâmetro imagem é o tudo e face é somente o pedaço que contem o rosto
         pontosFaciais = detectorPontos(imagem, face)
         descritorFacial = reconheciemntoFacial.compute_face_descriptor(imagem, pontosFaciais)
         # O resultado do descritorFacial é um vetor com 128 posições que descrevem a face encontrada
@@ -82,6 +83,3 @@ with open("recursos/indices_familia.pickle", 'wb') as f:
 
 # Limpar todas as janelas
 # cv2.destroyAllWindows()
-
-
-
