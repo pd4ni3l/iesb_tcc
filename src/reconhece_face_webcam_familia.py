@@ -10,7 +10,7 @@ import cv2
 
 output = None
 display = 0
-pickle_file = "pickle/familia.pickle"
+pickle_file = "recursos/faces_familia_codificada.pickle"
 # load the known faces and embeddings
 print("[INFO] loading encodings...")
 # data = pickle.loads(open(args["encodings"], "rb").read())

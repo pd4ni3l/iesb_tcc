@@ -24,17 +24,20 @@ descritoresFaciais = np.load("recursos/descritores_familia.npy")
 # Se limiar for igual a zero (0) quer dizer que a imagem do rosto tem que ser exatamente igual a da base do descritor
 limiar = 0.5
 
-# Varrer pasta com imagens que nao foram utilizadas para criar a base de treinamento
-for arquivo in glob.glob(os.path.join("dataset/*", "*.png")):
-    imagem_read = cv2.imread(arquivo)
-    imagem = cv2.resize(imagem_read, (800,600), interpolation = cv2.INTER_AREA)
-    facesDetectadas = detectorFace(imagem, 1)
+# Definindo variáveis
+captura = cv2.VideoCapture(0)
+
+
+# Capturar streaming de video e submeter a análise
+while captura.isOpened():
+    conectado, frame = captura.read()
+    facesDetectadas = detectorFace(frame, 1)
     for face in facesDetectadas:
         e, t, d, b = (int(face.left()), int(face.top()), int(face.right()), int(face.bottom()))
         # Pegar os pontos faciais da imagem atual
-        pontosFaciais = detectorPontos(imagem, face)
+        pontosFaciais = detectorPontos(frame, face)
         # Gerar descritor facial da imagem atual
-        descritorFacial = reconheciemntoFacial.compute_face_descriptor(imagem, pontosFaciais)
+        descritorFacial = reconheciemntoFacial.compute_face_descriptor(frame, pontosFaciais)
         # Gerar lista como feito no gera_descritor_face.py para fazer a comparação
         listaDescritorFacial = [fd for fd in descritorFacial]
         # Gerar array numpy com os valores coletados da lista
@@ -81,12 +84,12 @@ for arquivo in glob.glob(os.path.join("dataset/*", "*.png")):
             nome = 'Desconhecido'
 
         # Desenhar bounding boxes
-        cv2.rectangle(imagem, (e, t), (d, b), (0,255,255), 2)
+        cv2.rectangle(frame, (e, t), (d, b), (0,255,255), 2)
         # Adicionar texto ao bounding box
         texto = "{} {:.4f}".format(nome, distanciaMinima) # Formatação da qual distancia encontrada.
-        cv2.putText(imagem, texto, (d, t), cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.5, (0,255,255))
+        cv2.putText(frame, texto, (d, t), cv2.FONT_HERSHEY_COMPLEX_SMALL, 0.5, (0,255,255))
 
-    cv2.imshow("Detectando com HOG", imagem)
+    cv2.imshow("Detectando com HOG", frame)
     cv2.waitKey(0)
 
 # Destroi todas as janelas
