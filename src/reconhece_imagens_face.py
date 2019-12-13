@@ -14,7 +14,10 @@ detectorPontos = dlib.shape_predictor("recursos/shape_predictor_68_face_landmark
 # Indicar a rede CNN para ser utilizada
 reconheciemntoFacial = dlib.face_recognition_model_v1("recursos/dlib_face_recognition_resnet_model_v1.dat")
 # Carregar os indices criados previamente
-indices = np.load("recursos/indices_familia.pickle")
+# Windows
+indices = cPickle.loads(open("recursos/indices_familia.pickle",'rb').read())
+# Mac
+# indices = np.load("recursos/indices_familia.pickle")
 # Carregar descritores faciais criados anteriormente
 descritoresFaciais = np.load("recursos/descritores_familia.npy")
 # Definir o limiar que o KNN usará para se posicionar no vetor de características
@@ -63,12 +66,16 @@ for arquivo in glob.glob(os.path.join("dataset/*", "*.jpg")):
         distanciaMinima = distancias[minimo]
         # Visualizando
         # print(distanciaMinima)
-
+        # print(indices)
+        # exit(0)
         # Controlar verificando o limiar
         if distanciaMinima <= limiar:
             # Pegar o nome dessa pessoa no indice e somente uma (1) posiçao. Fatiar a string para pegar o nome.
-            nome = os.path.split(indices[minimo])[0].split("/")[1]
-            print(nome)
+            # Windows
+            nome = os.path.split(indices[minimo])[0].split("\\")[1]
+            # Mac
+            # nome = os.path.split(indices[minimo])[0].split("/")[1]
+            # print(nome)
         else:
             nome = 'Desconhecido'
 
