@@ -1,4 +1,0 @@
-{
-    "python.Linting.pylintEnabled": true,
-    "python.pythonPath": "venv/bin/python3"
-}
