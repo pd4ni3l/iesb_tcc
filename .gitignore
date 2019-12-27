@@ -1,5 +1,11 @@
 downloads/
 documentos/
+testes/
+hharcascades/
+src/
+.vscode/
+.vs/
+*.icloud
 *.zip
 *.avi
 *.mp4
