@@ -1,3 +1,15 @@
+'''
+Script para gerar um único arquivo com nome e a codificação das face
+Este script é de autoria de Adrian Rosebrock e está disponível em:
+https://www.pyimagesearch.com/2018/06/18/face-recognition-with-opencv-python-and-deep-learning/
+
+A utilização deste script se dá pela facilidade de execução e velocidade no processamento podendo
+se escolher qual método de detecção para gerar o arquivo.
+
+Executado com os seguintes parâmetros:
+python3 codifica_faces.py -i dataset/ -e recursos/faces_decodificadas.pickle -d hog
+
+'''
 # USAGE
 # python encode_faces.py --dataset dataset --encodings encodings.pickle
 

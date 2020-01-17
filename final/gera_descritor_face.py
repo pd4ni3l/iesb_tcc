@@ -11,7 +11,7 @@ import pickle as cPickle
 # Definições de detector de face e detector de pontos faciais
 detectorFace = dlib.get_frontal_face_detector()
 detectorPontos = dlib.shape_predictor("recursos/shape_predictor_68_face_landmarks.dat")
-# Indicar a rede CNN para ser utilizada
+# Indicar a rede CNN a ser utilizada
 reconheciemntoFacial = dlib.face_recognition_model_v1("recursos/dlib_face_recognition_resnet_model_v1.dat")
 # Variáveis de controle
 indice = {}
@@ -26,19 +26,19 @@ for arquivo in glob.glob(os.path.join("dataset/*", "*.png")):
     facesDetectadas = detectorFace(imagem, 1)
     numeroFacesDetectadas = len(facesDetectadas)
     # Sanitizando
-    # Verificar se existe face na imagem
+    # Verifica se existe face na imagem
     if numeroFacesDetectadas > 1:
-        # Avisa que existe mais de uma face e sair informando o arquivo
+        # Avisar que existe mais de uma face e sair informando nome do arquivo
         print("Número de faces detectadas na imagem: {} arquivo {}".format(numeroFacesDetectadas, arquivo))
-        exit(0) # Abortar a varredura da pasta para correção
+        exit(0) # Aborta a varredura da pasta para correção
     elif numeroFacesDetectadas < 1:
-        # Avisar com que não tem imagem e sair informando o arquivo
+        # Avisar que não tem imagem e sair informando o nome do arquivo
         print("Nenhuma face detectadas no arquivo {}".format(arquivo))
-        exit(0) # Abortar a varredura da pasta para correção
+        exit(0) # Aborta a varredura da pasta para correção
 
     # Identificar os 68 pontos faciais
     for face in facesDetectadas:
-        # A parâmetro imagem é o tudo e face é somente o pedaço que contem o rosto
+        # O parâmetro imagem é a imagem toda e face é somente o pedaço que contém o rosto
         pontosFaciais = detectorPontos(imagem, face)
         descritorFacial = reconheciemntoFacial.compute_face_descriptor(imagem, pontosFaciais)
         # O resultado do descritorFacial é um vetor com 128 posições que descrevem a face encontrada

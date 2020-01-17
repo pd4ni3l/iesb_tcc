@@ -16,13 +16,11 @@ print("[INFO] Carregando arquivo de faces conhecidas e arquivo Haar detector de 
 data = pickle.loads(open(encodings, "rb").read())
 detector = cv2.CascadeClassifier(cascade)
 
-# initialize the video stream and allow the camera sensor to warm up
 # Inicializando o stream de video e aguardando 2 segundo de aquecimento do sensor
 print("[INFO] Iniciando video stream...")
 vs = VideoStream(src=0).start()
 time.sleep(2.0)
 
-# start the FPS counter
 # Inicializando o contador FPS
 fps = FPS().start()
 
@@ -32,7 +30,6 @@ while True:
     frame = vs.read()
     frame = imutils.resize(frame, width=500)
 
-    # Converter o frame BGR para scala de cinza para detecção de face
     # Converter BGR para RGB para reconhecimento de face
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
@@ -48,7 +45,7 @@ while True:
     encodings = face_recognition.face_encodings(rgb, boxes)
     names = []
 
-    # Loop sobre a face encontradas
+    # Loop sobre a face encontrada
     for encoding in encodings:
         # Tentar encontrar a face detectada com as faces conhecidas utilizando módulo face_recognition
         matches = face_recognition.compare_faces(data["encodings"],
@@ -57,7 +54,7 @@ while True:
 
         # Verificando se face foi encontrada
         if True in matches:
-            # Procurar os indices de todas as faces encontradas e inicializa
+            # Procurar os indices de todas as faces encontradas e inicializar
             # o dicionario de contagem total de quantas vezes cada face foi detectada
             matchedIdxs = [i for (i, b) in enumerate(matches) if b]
             counts = {}
